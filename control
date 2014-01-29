@@ -1,0 +1,10 @@
+Package: com.alexzielenski.dockify
+Name: dockify
+Depends: 
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome library of some sort!!
+Maintainer: Alex Zielenski
+Author: Alex Zielenski
+Section: System
+Tag: role::developer
