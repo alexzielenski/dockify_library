@@ -6,9 +6,15 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FA6CBD501A913AD9009FA889 /* Dockify.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dockify.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6CBD541A913AD9009FA889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKSwizzle.h; path = external/ZKSwizzle/ZKSwizzle/ZKSwizzle.h; sourceTree = "<group>"; };
+		FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKSwizzle.m; path = external/ZKSwizzle/ZKSwizzle/ZKSwizzle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,8 @@
 		FA6CBD521A913AD9009FA889 /* Dockify */ = {
 			isa = PBXGroup;
 			children = (
+				FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */,
+				FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */,
 				FA6CBD531A913AD9009FA889 /* Supporting Files */,
 			);
 			path = Dockify;
@@ -120,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +252,7 @@
 				FA6CBD591A913AD9009FA889 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,3 @@
+[submodule "Dockify/external/ZKSwizzle"]
+	path = Dockify/external/ZKSwizzle
+	url = https://github.com/alexzielenski/ZKSwizzle.git
