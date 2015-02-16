@@ -18,3 +18,14 @@ __attribute__((__constructor__)) static void _DKInitialize() {
     
     DLog(@"initialized");
 }
+
+@interface Dockify : NSObject
+@end
+
+@implementation Dockify
+
++ (void)load {
+    _DKInitialize();
+}
+
+@end

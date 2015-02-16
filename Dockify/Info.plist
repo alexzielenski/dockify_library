@@ -23,7 +23,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 Alexander Zielenski. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>Dockify</string>
 	<key>OPFilters</key>
 	<dict>
 		<key>Bundles</key>
@@ -33,7 +33,10 @@
 	</dict>
 	<key>SIMBLTargetApplications</key>
 	<array>
-		<string>com.apple.dock</string>
+		<dict>
+			<key>BundleIdentifier</key>
+			<string>com.apple.dock</string>
+		</dict>
 	</array>
 </dict>
 </plist>
