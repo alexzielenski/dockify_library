@@ -14,7 +14,9 @@
 
 - (void)layoutSublayers {
     ZKOrig(void);
-
+    if (!currentTheme)
+        return;
+    
 //    self.glassLayer.hidden = YES;
     self.separatorLayer.hidden = !currentTheme.showSeparator;
 //    self.materialLayer.hidden = NO;
@@ -26,6 +28,10 @@
     self.borderColor = currentTheme.borderColor.CGColor;
     self.borderWidth = currentTheme.borderWidth;
     self.cornerRadius = currentTheme.borderRadius;
+    self.shadowColor = currentTheme.shadowColor.CGColor;
+    self.shadowOpacity = currentTheme.shadowColor.alphaComponent;
+    self.shadowOffset = currentTheme.shadowDirection;
+    self.shadowRadius = currentTheme.shadowRadius;
 }
 
 #pragma mark - Properties
