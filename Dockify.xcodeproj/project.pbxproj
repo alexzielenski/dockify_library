@@ -15,6 +15,7 @@
 		FA6CBD6C1A913E89009FA889 /* DKFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD6B1A913E89009FA889 /* DKFloorLayer.m */; };
 		FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD701A9161F2009FA889 /* DKTheme.m */; };
 		FA6CBD741A9163C3009FA889 /* ZKColorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD731A9163C3009FA889 /* ZKColorParser.m */; };
+		FA6CBD9D1A918748009FA889 /* DKTileLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD9C1A918748009FA889 /* DKTileLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		FA6CBD721A9163C3009FA889 /* ZKColorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKColorParser.h; path = helpers/ZKColorParser.h; sourceTree = "<group>"; };
 		FA6CBD731A9163C3009FA889 /* ZKColorParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKColorParser.m; path = helpers/ZKColorParser.m; sourceTree = "<group>"; };
 		FA6CBD9A1A91827F009FA889 /* ECMaterialLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECMaterialLayer.h; sourceTree = "<group>"; };
+		FA6CBD9B1A918748009FA889 /* DKTileLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKTileLayer.h; path = theme/DKTileLayer.h; sourceTree = "<group>"; };
+		FA6CBD9C1A918748009FA889 /* DKTileLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKTileLayer.m; path = theme/DKTileLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				FA6CBD701A9161F2009FA889 /* DKTheme.m */,
 				FA6CBD6A1A913E89009FA889 /* DKFloorLayer.h */,
 				FA6CBD6B1A913E89009FA889 /* DKFloorLayer.m */,
+				FA6CBD9B1A918748009FA889 /* DKTileLayer.h */,
+				FA6CBD9C1A918748009FA889 /* DKTileLayer.m */,
 				FA6CBD531A913AD9009FA889 /* Supporting Files */,
 			);
 			path = Dockify;
@@ -184,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6CBD9D1A918748009FA889 /* DKTileLayer.m in Sources */,
 				FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */,
 				FA6CBD681A913D58009FA889 /* math.c in Sources */,
 				FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */,
