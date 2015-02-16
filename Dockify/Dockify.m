@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Alexander Zielenski. All rights reserved.
 //
 #import "Dockify.h"
+
 #import "DKFloorLayer.h"
+#import "DKTileLayer.h"
 
 DKTheme *currentTheme = nil;
 
@@ -31,6 +33,7 @@ __attribute__((__constructor__)) static void _DKInitialize() {
     currentTheme = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:@"/Users/Alex/Desktop/Dock.dockify"]];
     
     ZKSwizzle(DKFloorLayer, DOCKFloorLayer);
+    ZKSwizzle(DKTileLayer, DOCKTileLayer);
     
     DLog(@"initialized");
 }

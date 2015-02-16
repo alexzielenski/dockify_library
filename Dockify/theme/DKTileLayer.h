@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "DOCKTileLayer.h"
 
 @interface DKTileLayer : CALayer
 

@@ -7,7 +7,16 @@
 //
 
 #import "DKTileLayer.h"
+#import "Dockify.h"
 
 @implementation DKTileLayer
+
+- (void)layoutSublayers {
+    self.opacity = currentTheme.iconOpacity;
+}
+
+- (float)opacity {
+    return currentTheme.iconOpacity;
+}
 
 @end

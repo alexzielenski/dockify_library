@@ -40,6 +40,7 @@
 		FA6CBDA41A918821009FA889 /* ECMaterialLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ECMaterialLayer.h; path = dump/ECMaterialLayer.h; sourceTree = "<group>"; };
 		FA6CBDA51A918834009FA889 /* math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = math.c; path = helpers/math.c; sourceTree = "<group>"; };
 		FA6CBDA61A918834009FA889 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math.h; path = helpers/math.h; sourceTree = "<group>"; };
+		FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKTileLayer.h; path = dump/DOCKTileLayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 		FA6CBDA21A9187FD009FA889 /* dump */ = {
 			isa = PBXGroup;
 			children = (
+				FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */,
 				FA6CBDA31A918821009FA889 /* DOCKFloorLayer.h */,
 				FA6CBDA41A918821009FA889 /* ECMaterialLayer.h */,
 			);
