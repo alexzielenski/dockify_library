@@ -11,17 +11,18 @@
 
 @implementation DKFloorLayer
 @dynamic separatorLayer, glassLayer, materialLayer;
-- (id)initWithOrientation:(int)arg1 hasSeparator:(_Bool)arg2 {
-    return ZKOrig(id, 0,  currentTheme.showSeparator);
-}
 
 - (void)layoutSublayers {
     ZKOrig(void);
 
 //    self.glassLayer.hidden = YES;
-    self.materialLayer.hidden = YES;
+    self.separatorLayer.hidden = !currentTheme.showSeparator;
+//    self.materialLayer.hidden = NO;
+    self.materialLayer.backgroundColor = currentTheme.backgroundColor.CGColor;
+    self.materialLayer.reduceTransparency = NO;
+    self.materialLayer.blurRadius = currentTheme.backgroundBlurRadius;
     
-    self.backgroundColor = currentTheme.backgroundColor.CGColor;
+//    self.backgroundColor = currentTheme.backgroundColor.CGColor;
     self.borderColor = currentTheme.borderColor.CGColor;
     self.borderWidth = currentTheme.borderWidth;
     self.cornerRadius = currentTheme.borderRadius;
@@ -29,8 +30,8 @@
 
 #pragma mark - Properties
 
-- (CALayer *)materialLayer {
-    return ZKHookIvar(self, CALayer *, "_materialLayer");
+- (ECMaterialLayer *)materialLayer {
+    return ZKHookIvar(self, ECMaterialLayer *, "_materialLayer");
 }
 
 - (CALayer *)separatorLayer {

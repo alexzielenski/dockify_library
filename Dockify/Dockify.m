@@ -10,22 +10,29 @@
 
 DKTheme *currentTheme = nil;
 
+static BOOL loaded = NO;
+
+@interface Dockify : NSObject
+@end
+
 __attribute__((__constructor__)) static void _DKInitialize() {
+    [Dockify load];
+}
+
+
+@implementation Dockify
+
++ (void)load {
+    if (loaded)
+        return;
+    
+    loaded = YES;
     DLog(@"loaded");
     currentTheme = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:@"/Users/Alex/Desktop/Dock.dockify"]];
     
     ZKSwizzle(DKFloorLayer, DOCKFloorLayer);
     
     DLog(@"initialized");
-}
-
-@interface Dockify : NSObject
-@end
-
-@implementation Dockify
-
-+ (void)load {
-    _DKInitialize();
 }
 
 @end

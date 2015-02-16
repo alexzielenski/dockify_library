@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DOCKFloorLayer.h"
+#import "ECMaterialLayer.h"
 
 @interface DKFloorLayer : CALayer
 @property CALayer *separatorLayer;
 @property CALayer *glassLayer;
-@property (readonly) CALayer *materialLayer;
+@property (readonly) ECMaterialLayer *materialLayer;
 @end

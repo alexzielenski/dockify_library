@@ -33,6 +33,7 @@ extern DKDockSize DKDockSizeFromSize(CGSize size);
 @property (assign) CGFloat borderWidth;
 @property (strong) NSColor *borderColor;
 @property (strong) NSColor *backgroundColor;
+@property (assign) CGFloat backgroundBlurRadius;
 
 + (instancetype)themeWithContentsOfURL:(NSURL *)url;
 - (instancetype)initWithContentsOfURL:(NSURL *)url;

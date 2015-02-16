@@ -58,6 +58,7 @@ DKThemeKey DKBorderColorThemeKey       = @"BorderColor";
 DKThemeKey DKBorderWidthThemeKey       = @"BorderWidth";
 DKThemeKey DKBorderRadiusThemeKey      = @"BorderRadius";
 DKThemeKey DKBackgroundColorThemeKey   = @"BackgroundColor";
+DKThemeKey DKBackgroundBlurRadiusThemeKey   = @"BackgroundBlurRadius";
 
 extern DKDockSize DKDockSizeFromSize(CGSize size) {
     // large 1280x98px
@@ -140,6 +141,7 @@ NSString *retinaNameofFilename(DKFilename filename) {
     self.iconOpacity = [dict[DKIconOpacityThemeKey] doubleValue];
     self.borderRadius = [dict[DKBorderRadiusThemeKey] doubleValue];
     self.borderWidth = [dict[DKBorderWidthThemeKey] doubleValue];
+    self.backgroundBlurRadius = [dict[DKBackgroundBlurRadiusThemeKey] doubleValue];
     
     self.shadowColor =[ZKColorParser colorFromString:dict[DKShadowColorThemeKey]] ?: [NSColor blackColor];
     self.borderColor = [ZKColorParser colorFromString:dict[DKBorderColorThemeKey]];
