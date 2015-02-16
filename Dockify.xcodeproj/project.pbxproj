@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */; };
+		FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5D1A913C58009FA889 /* Dockify.m */; };
+		FA6CBD631A913CD9009FA889 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6CBD621A913CD9009FA889 /* QuartzCore.framework */; };
+		FA6CBD651A913CDE009FA889 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6CBD641A913CDE009FA889 /* CoreGraphics.framework */; };
+		FA6CBD681A913D58009FA889 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD661A913D58009FA889 /* math.c */; };
+		FA6CBD6C1A913E89009FA889 /* DKFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD6B1A913E89009FA889 /* DKFloorLayer.m */; };
+		FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD701A9161F2009FA889 /* DKTheme.m */; };
+		FA6CBD741A9163C3009FA889 /* ZKColorParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD731A9163C3009FA889 /* ZKColorParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -15,6 +22,20 @@
 		FA6CBD541A913AD9009FA889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKSwizzle.h; path = external/ZKSwizzle/ZKSwizzle/ZKSwizzle.h; sourceTree = "<group>"; };
 		FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKSwizzle.m; path = external/ZKSwizzle/ZKSwizzle/ZKSwizzle.m; sourceTree = "<group>"; };
+		FA6CBD5D1A913C58009FA889 /* Dockify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dockify.m; sourceTree = "<group>"; };
+		FA6CBD611A913CA7009FA889 /* Dockify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dockify.h; sourceTree = "<group>"; };
+		FA6CBD621A913CD9009FA889 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA6CBD641A913CDE009FA889 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA6CBD661A913D58009FA889 /* math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math.c; sourceTree = "<group>"; };
+		FA6CBD671A913D58009FA889 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
+		FA6CBD691A913E75009FA889 /* DOCKFloorLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOCKFloorLayer.h; sourceTree = "<group>"; };
+		FA6CBD6A1A913E89009FA889 /* DKFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKFloorLayer.h; sourceTree = "<group>"; };
+		FA6CBD6B1A913E89009FA889 /* DKFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKFloorLayer.m; sourceTree = "<group>"; };
+		FA6CBD6D1A913EE1009FA889 /* DKConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKConstants.h; sourceTree = "<group>"; };
+		FA6CBD6F1A9161F2009FA889 /* DKTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKTheme.h; sourceTree = "<group>"; };
+		FA6CBD701A9161F2009FA889 /* DKTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKTheme.m; sourceTree = "<group>"; };
+		FA6CBD721A9163C3009FA889 /* ZKColorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKColorParser.h; path = helpers/ZKColorParser.h; sourceTree = "<group>"; };
+		FA6CBD731A9163C3009FA889 /* ZKColorParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKColorParser.m; path = helpers/ZKColorParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6CBD651A913CDE009FA889 /* CoreGraphics.framework in Frameworks */,
+				FA6CBD631A913CD9009FA889 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,6 +54,8 @@
 		FA6CBD471A913AD9009FA889 = {
 			isa = PBXGroup;
 			children = (
+				FA6CBD641A913CDE009FA889 /* CoreGraphics.framework */,
+				FA6CBD621A913CD9009FA889 /* QuartzCore.framework */,
 				FA6CBD521A913AD9009FA889 /* Dockify */,
 				FA6CBD511A913AD9009FA889 /* Products */,
 			);
@@ -47,8 +72,20 @@
 		FA6CBD521A913AD9009FA889 /* Dockify */ = {
 			isa = PBXGroup;
 			children = (
+				FA6CBD6D1A913EE1009FA889 /* DKConstants.h */,
+				FA6CBD691A913E75009FA889 /* DOCKFloorLayer.h */,
 				FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */,
 				FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */,
+				FA6CBD721A9163C3009FA889 /* ZKColorParser.h */,
+				FA6CBD731A9163C3009FA889 /* ZKColorParser.m */,
+				FA6CBD611A913CA7009FA889 /* Dockify.h */,
+				FA6CBD5D1A913C58009FA889 /* Dockify.m */,
+				FA6CBD671A913D58009FA889 /* math.h */,
+				FA6CBD661A913D58009FA889 /* math.c */,
+				FA6CBD6F1A9161F2009FA889 /* DKTheme.h */,
+				FA6CBD701A9161F2009FA889 /* DKTheme.m */,
+				FA6CBD6A1A913E89009FA889 /* DKFloorLayer.h */,
+				FA6CBD6B1A913E89009FA889 /* DKFloorLayer.m */,
 				FA6CBD531A913AD9009FA889 /* Supporting Files */,
 			);
 			path = Dockify;
@@ -72,6 +109,7 @@
 				FA6CBD4C1A913AD9009FA889 /* Sources */,
 				FA6CBD4D1A913AD9009FA889 /* Frameworks */,
 				FA6CBD4E1A913AD9009FA889 /* Resources */,
+				FA6CBD6E1A914068009FA889 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -123,12 +161,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FA6CBD6E1A914068009FA889 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "killall TERM Dock";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA6CBD4C1A913AD9009FA889 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */,
+				FA6CBD681A913D58009FA889 /* math.c in Sources */,
+				FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */,
+				FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */,
+				FA6CBD6C1A913E89009FA889 /* DKFloorLayer.m in Sources */,
+				FA6CBD741A9163C3009FA889 /* ZKColorParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +272,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(LOCAL_LIBRARY_DIR)/Opee/Extensions/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Dockify/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Opee/Extensions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
@@ -225,10 +289,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				DYLIB_INSTALL_NAME_BASE = "$(LOCAL_LIBRARY_DIR)/Opee/Extensions/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Dockify/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Opee/Extensions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

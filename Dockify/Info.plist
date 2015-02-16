@@ -24,5 +24,16 @@
 	<string>Copyright © 2015 Alexander Zielenski. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>OPFilters</key>
+	<dict>
+		<key>Bundles</key>
+		<array>
+			<string>com.apple.dock</string>
+		</array>
+	</dict>
+	<key>SIMBLTargetApplications</key>
+	<array>
+		<string>com.apple.dock</string>
+	</array>
 </dict>
 </plist>
