@@ -14,4 +14,5 @@
 @property CALayer *separatorLayer;
 @property CALayer *glassLayer;
 @property (readonly) ECMaterialLayer *materialLayer;
+- (DKDockSize)currentSize;
 @end

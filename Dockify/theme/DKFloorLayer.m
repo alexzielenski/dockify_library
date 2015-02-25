@@ -17,21 +17,40 @@
     if (!currentTheme)
         return;
     
-//    self.glassLayer.hidden = YES;
-    self.separatorLayer.hidden = !currentTheme.showSeparator;
-//    self.materialLayer.hidden = NO;
-    self.materialLayer.backgroundColor = currentTheme.backgroundColor.CGColor;
-    self.materialLayer.reduceTransparency = NO;
-    self.materialLayer.blurRadius = currentTheme.backgroundBlurRadius;
+//    CGFloat fH = frontline.frame.size.height;
+    CGFloat h = self.bounds.size.height;
+    CGFloat o  = offsetForHeight(h);
+    CGFloat w  = self.bounds.size.width;
     
-//    self.backgroundColor = currentTheme.backgroundColor.CGColor;
-    self.borderColor = currentTheme.borderColor.CGColor;
-    self.borderWidth = currentTheme.borderWidth;
-    self.cornerRadius = currentTheme.borderRadius;
-    self.shadowColor = currentTheme.shadowColor.CGColor;
-    self.shadowOpacity = currentTheme.shadowColor.alphaComponent;
-    self.shadowOffset = currentTheme.shadowDirection;
-    self.shadowRadius = currentTheme.shadowRadius;
+    self.glassLayer.contents = nil;
+    self.separatorLayer.hidden = !currentTheme.showSeparator;
+    
+    ECMaterialLayer *material = self.materialLayer;
+    material.contents = (__bridge id)([currentTheme scurveImageForSize:self.currentSize retina:YES]);
+//    material.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, w, h);
+    CATransform3D stretch = CATransform3DrectToQuad(self.bounds,
+                                                    0, 0,
+                                                    w + o, 0,
+                                                    0, h,
+                                                    w - o, h);
+    self.transform = stretch;
+    
+    material.backgroundColor    = currentTheme.backgroundColor.CGColor;
+    material.reduceTransparency = NO;
+    material.blurRadius         = currentTheme.backgroundBlurRadius;
+    material.cornerRadius       = currentTheme.borderRadius;
+    
+    self.borderColor                      = currentTheme.borderColor.CGColor;
+    self.borderWidth                      = currentTheme.borderWidth;
+    self.cornerRadius                     = currentTheme.borderRadius;
+    self.shadowColor                      = currentTheme.shadowColor.CGColor;
+    self.shadowOpacity                    = currentTheme.shadowColor.alphaComponent;
+    self.shadowOffset                     = currentTheme.shadowDirection;
+    self.shadowRadius                     = currentTheme.shadowRadius;
+}
+
+- (DKDockSize)currentSize {
+    return DKDockSizeFromSize(self.materialLayer.frame.size);
 }
 
 #pragma mark - Properties

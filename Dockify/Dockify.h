@@ -16,3 +16,4 @@
 #define D(fmt) DLog(@"%@", fmt)
 
 extern DKTheme *currentTheme;
+extern DKThemeStyle currentStyle;
