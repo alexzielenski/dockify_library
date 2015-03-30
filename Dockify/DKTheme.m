@@ -6,59 +6,60 @@
 //  Copyright (c) 2014 Alex Zielenski. All rights reserved.
 //
 
+#import "Dockify.h"
 #import "DKTheme.h"
 #import "ZKColorParser.h"
 
 typedef NSString * DKFilename;
-DKFilename DKInfoFileName = @"Info.plist";
+DKFilename DKInfoFileName                = @"Info.plist";
 
-DKFilename DKLargeBackgroundFilename = @"backgrounds/3d/large.png";
-DKFilename DKMediumBackgroundFilename = @"backgrounds/3d/small.png";
-DKFilename DKSmallBackgroundFilename = @"backgrounds/3d/medium.png";
-DKFilename DKXLargeBackgroundFilename = @"backgrounds/3d/xlarge.png";
-DKFilename DKFrontlineFilename = @"backgrounds/3d/frontline.png";
+DKFilename DKLargeBackgroundFilename     = @"backgrounds/3d/large.png";
+DKFilename DKMediumBackgroundFilename    = @"backgrounds/3d/small.png";
+DKFilename DKSmallBackgroundFilename     = @"backgrounds/3d/medium.png";
+DKFilename DKXLargeBackgroundFilename    = @"backgrounds/3d/xlarge.png";
+DKFilename DKFrontlineFilename           = @"backgrounds/3d/frontline.png";
 
-DKFilename DKWideSmallFilename = @"backgrounds/wide/small.png";
-DKFilename DKWideMediumFilename = @"backgrounds/wide/medium.png";
-DKFilename DKWideLargeFilename = @"backgrounds/wide/large.png";;
+DKFilename DKWideSmallFilename           = @"backgrounds/wide/small.png";
+DKFilename DKWideMediumFilename          = @"backgrounds/wide/medium.png";
+DKFilename DKWideLargeFilename           = @"backgrounds/wide/large.png";;
 
-DKFilename DK2DTopLeftFilename = @"backgrounds/2d/topleft.png";
-DKFilename DK2DTopRightFilename = @"backgrounds/2d/topright.png";
-DKFilename DK2DTopEdgeFilename = @"backgrounds/2d/topedge.png";;
-DKFilename DK2DLeftEdgeFilename = @"backgrounds/2d/leftedge.png";;
-DKFilename DK2DRightEdgeFilename = @"backgrounds/2d/rightedge.png";;
-DKFilename DK2DCenterFillFilename = @"backgrounds/2d/centerfill.png";;
+DKFilename DK2DTopLeftFilename           = @"backgrounds/2d/topleft.png";
+DKFilename DK2DTopRightFilename          = @"backgrounds/2d/topright.png";
+DKFilename DK2DTopEdgeFilename           = @"backgrounds/2d/topedge.png";;
+DKFilename DK2DLeftEdgeFilename          = @"backgrounds/2d/leftedge.png";;
+DKFilename DK2DRightEdgeFilename         = @"backgrounds/2d/rightedge.png";;
+DKFilename DK2DCenterFillFilename        = @"backgrounds/2d/centerfill.png";;
 
-DKFilename DKSeparator2DFilename = @"separators/2d.png";
+DKFilename DKSeparator2DFilename         = @"separators/2d.png";
 DKFilename DKSeparator2DVerticalFilename = @"separators/2dvertical.png";
-DKFilename DKSeparator3DFilename = @"separators/3d.png";
-DKFilename DKSeparatorWideFilename = @"separators/wide.png";
+DKFilename DKSeparator3DFilename         = @"separators/3d.png";
+DKFilename DKSeparatorWideFilename       = @"separators/wide.png";
 
-DKFilename DKIndicatorSmallFilename = @"indicators/small.png";
-DKFilename DKIndicatorMediumFilename = @"indicators/medium.png";
-DKFilename DKIndicatorLargeFilename = @"indicators/large.png";
-DKFilename DKIndicatorXLargeFilename = @"indicators/xlarge.png";
+DKFilename DKIndicatorSmallFilename      = @"indicators/small.png";
+DKFilename DKIndicatorMediumFilename     = @"indicators/medium.png";
+DKFilename DKIndicatorLargeFilename      = @"indicators/large.png";
+DKFilename DKIndicatorXLargeFilename     = @"indicators/xlarge.png";
 
 typedef NSString * DKThemeKey;
-DKThemeKey DKAuthorThemeKey            = @"Author";
-DKThemeKey DKInfoThemeKey              = @"Info";
-DKThemeKey DKReflectionOpacityThemeKey = @"ReflectionOpacity";
-DKThemeKey DKBackgroundOpacityThemeKey = @"BackgroundOpacity";
-DKThemeKey DKRetinaThemeKey            = @"Retina";
-DKThemeKey DKNameThemeKey              = @"Name";
-DKThemeKey DKStylesThemeKey            = @"Styles";
-DKThemeKey DKShowSeparatorThemeKey     = @"ShowSeparator";
-DKThemeKey DKShowShadowsThemeKey       = @"ShowShadows";
-DKThemeKey DKVersionThemeKey           = @"Version";
-DKThemeKey DKShadowColorThemeKey       = @"BackgroundShadowColor";
-DKThemeKey DKShadowDirectionThemeKey   = @"BackgroundShadowDirection";
-DKThemeKey DKShadowRadiusThemeKey      = @"BackgroundShadowRadius";
-DKThemeKey DKIconOpacityThemeKey       = @"IconOpacity";
-DKThemeKey DKBorderColorThemeKey       = @"BorderColor";
-DKThemeKey DKBorderWidthThemeKey       = @"BorderWidth";
-DKThemeKey DKBorderRadiusThemeKey      = @"BorderRadius";
-DKThemeKey DKBackgroundColorThemeKey   = @"BackgroundColor";
-DKThemeKey DKBackgroundBlurRadiusThemeKey   = @"BackgroundBlurRadius";
+DKThemeKey DKAuthorThemeKey               = @"Author";
+DKThemeKey DKInfoThemeKey                 = @"Info";
+DKThemeKey DKReflectionOpacityThemeKey    = @"ReflectionOpacity";
+DKThemeKey DKBackgroundOpacityThemeKey    = @"BackgroundOpacity";
+DKThemeKey DKRetinaThemeKey               = @"Retina";
+DKThemeKey DKNameThemeKey                 = @"Name";
+DKThemeKey DKStylesThemeKey               = @"Styles";
+DKThemeKey DKShowSeparatorThemeKey        = @"ShowSeparator";
+DKThemeKey DKShowShadowsThemeKey          = @"ShowShadows";
+DKThemeKey DKVersionThemeKey              = @"Version";
+DKThemeKey DKShadowColorThemeKey          = @"BackgroundShadowColor";
+DKThemeKey DKShadowDirectionThemeKey      = @"BackgroundShadowDirection";
+DKThemeKey DKShadowRadiusThemeKey         = @"BackgroundShadowRadius";
+DKThemeKey DKIconOpacityThemeKey          = @"IconOpacity";
+DKThemeKey DKBorderColorThemeKey          = @"BorderColor";
+DKThemeKey DKBorderWidthThemeKey          = @"BorderWidth";
+DKThemeKey DKBorderRadiusThemeKey         = @"BorderRadius";
+DKThemeKey DKBackgroundColorThemeKey      = @"BackgroundColor";
+DKThemeKey DKBackgroundBlurRadiusThemeKey = @"BackgroundBlurRadius";
 
 extern DKDockSize DKDockSizeFromSize(CGSize size) {
     // large 1280x98px
@@ -128,25 +129,25 @@ NSString *retinaNameofFilename(DKFilename filename) {
         return NO;
     }
 
-    self.author = dict[DKAuthorThemeKey];
-    self.info = dict[DKInfoThemeKey];
-    self.reflectionOpacity = [dict[DKReflectionOpacityThemeKey] doubleValue];
-    self.backgroundOpacity = [dict[DKBackgroundOpacityThemeKey] doubleValue];
-    self.retina = [dict[DKRetinaThemeKey] boolValue];
-    self.name = dict[DKNameThemeKey];
-    self.styles = [dict[DKStylesThemeKey] unsignedIntegerValue];
-    self.showShadows = [dict[DKShowShadowsThemeKey] boolValue];
-    self.showSeparator = [dict[DKShowSeparatorThemeKey] boolValue];
-    self.version = [dict[DKVersionThemeKey] doubleValue];
-    self.iconOpacity = [dict[DKIconOpacityThemeKey] doubleValue];
-    self.borderRadius = [dict[DKBorderRadiusThemeKey] doubleValue];
-    self.borderWidth = [dict[DKBorderWidthThemeKey] doubleValue];
+    self.author               = dict[DKAuthorThemeKey];
+    self.info                 = dict[DKInfoThemeKey];
+    self.reflectionOpacity    = [dict[DKReflectionOpacityThemeKey] doubleValue];
+    self.backgroundOpacity    = [dict[DKBackgroundOpacityThemeKey] doubleValue];
+    self.retina               = [dict[DKRetinaThemeKey] boolValue];
+    self.name                 = dict[DKNameThemeKey];
+    self.styles               = [dict[DKStylesThemeKey] unsignedIntegerValue];
+    self.showShadows          = [dict[DKShowShadowsThemeKey] boolValue];
+    self.showSeparator        = [dict[DKShowSeparatorThemeKey] boolValue];
+    self.version              = [dict[DKVersionThemeKey] doubleValue];
+    self.iconOpacity          = [dict[DKIconOpacityThemeKey] doubleValue];
+    self.borderRadius         = [dict[DKBorderRadiusThemeKey] doubleValue];
+    self.borderWidth          = [dict[DKBorderWidthThemeKey] doubleValue];
     self.backgroundBlurRadius = [dict[DKBackgroundBlurRadiusThemeKey] doubleValue];
-    
-    self.shadowColor =[ZKColorParser colorFromString:dict[DKShadowColorThemeKey]] ?: [NSColor blackColor];
-    self.borderColor = [ZKColorParser colorFromString:dict[DKBorderColorThemeKey]];
+
+    self.shadowColor     = [ZKColorParser colorFromString:dict[DKShadowColorThemeKey]] ?: [NSColor blackColor];
+    self.borderColor     = [ZKColorParser colorFromString:dict[DKBorderColorThemeKey]];
     self.backgroundColor = [ZKColorParser colorFromString:dict[DKBackgroundColorThemeKey]];
-    
+
     // shadow is in the format (x, y) where both specify offset directions for the shadow
     NSString *shadowString = [dict[DKShadowDirectionThemeKey] stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (shadowString) {
@@ -177,7 +178,11 @@ NSString *retinaNameofFilename(DKFilename filename) {
         return (__bridge CGImageRef)obj;
 
     NSURL *imageURL = [self.fileURL URLByAppendingPathComponent:flag ? retinaNameofFilename(filename) : filename];
-
+    if (![[NSFileManager defaultManager] fileExistsAtPath:imageURL.path]) {
+        if (flag) return [self imageWithName:filename retina:NO];
+        else return nil;
+    }
+    
     NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithData:[NSData dataWithContentsOfURL:imageURL]];
     if (!image) {
         if (flag) return [self imageWithName:filename retina:NO];
