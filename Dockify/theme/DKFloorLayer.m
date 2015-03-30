@@ -12,8 +12,13 @@
 @implementation DKFloorLayer
 @dynamic separatorLayer, glassLayer, materialLayer;
 
++ (void)load {    
+    ZKSwizzle(self, DOCKFloorLayer);
+}
+
 - (void)layoutSublayers {
     ZKOrig(void);
+    
     if (!currentTheme)
         return;
     
@@ -22,35 +27,89 @@
     CGFloat o  = offsetForHeight(h);
     CGFloat w  = self.bounds.size.width;
     
-    self.glassLayer.contents = nil;
-    self.separatorLayer.hidden = !currentTheme.showSeparator;
-    
     ECMaterialLayer *material = self.materialLayer;
-    material.contents = (__bridge id)([currentTheme scurveImageForSize:self.currentSize retina:YES]);
-//    material.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, w, h);
-    CATransform3D stretch = CATransform3DrectToQuad(self.bounds,
-                                                    0, 0,
+    ((CALayer *)material).opacity = 0.0;
+    
+    CALayer *glass = self.glassLayer;
+    
+    // remove dark/light background from material
+    CALayer *backdropLayer = ZKHookIvar(material, CALayer *, "_backdropLayer");
+    backdropLayer.backgroundColor = NSColor.clearColor.CGColor;
+    backdropLayer.contents        = nil;
+    backdropLayer.borderColor     = backdropLayer.backgroundColor;
+    backdropLayer.shadowOpacity   = 0.0;
+    backdropLayer.borderWidth     = 0.0;
+    backdropLayer.shadowPath      = NULL;
+    material.contents             = nil;
+    
+//    self.separatorLayer.hidden = !currentTheme.showSeparator;
+    self.separatorLayer.backgroundColor = NSColor.blueColor.CGColor;
+    CGRect sepFrame = self.separatorLayer.frame;
+    sepFrame.origin.x -= 50;
+    sepFrame.size.width += 100;
+    self.separatorLayer.frame = sepFrame;
+    
+    CGRect frameRect = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, w, h);
+    glass.frame = frameRect;
+    CATransform3D stretch = CATransform3DrectToQuad(frameRect,
+                                                    -o, 0,
                                                     w + o, 0,
                                                     0, h,
-                                                    w - o, h);
-    self.transform = stretch;
+                                                    w, h);
+    glass.contentsGravity = kCAGravityResize;
+    glass.anchorPoint     = CGPointZero;
+    glass.transform       = stretch;
+    glass.backgroundColor = [currentTheme.backgroundColor colorWithAlphaComponent:0.25].CGColor;
+    glass.cornerRadius    = currentTheme.borderRadius;
+    glass.contents        = (__bridge id)([currentTheme scurveImageForSize:self.currentSize retina:YES]);
+
+    glass.borderColor   = currentTheme.borderColor.CGColor;
+    glass.borderWidth   = currentTheme.borderWidth;
+    glass.cornerRadius  = self.bounds.size.height * 0.0;//currentTheme.borderRadius;
     
-    material.backgroundColor    = currentTheme.backgroundColor.CGColor;
+    self.shadowColor   = currentTheme.shadowColor.CGColor;
+    self.shadowOpacity = currentTheme.shadowColor.alphaComponent;
+    self.shadowOffset  = currentTheme.shadowDirection;
+    self.shadowRadius  = currentTheme.shadowRadius;
+
     material.reduceTransparency = NO;
     material.blurRadius         = currentTheme.backgroundBlurRadius;
-    material.cornerRadius       = currentTheme.borderRadius;
     
-    self.borderColor                      = currentTheme.borderColor.CGColor;
-    self.borderWidth                      = currentTheme.borderWidth;
-    self.cornerRadius                     = currentTheme.borderRadius;
-    self.shadowColor                      = currentTheme.shadowColor.CGColor;
-    self.shadowOpacity                    = currentTheme.shadowColor.alphaComponent;
-    self.shadowOffset                     = currentTheme.shadowDirection;
-    self.shadowRadius                     = currentTheme.shadowRadius;
+    /*
+     BackdropLayer is what creates the blur behind the dock
+     We don't want to apply the transform directly to it because that
+     would warp the blurring, so, we make the backdrop layer big enough to
+     hold the entire maskLayer, then apply the transform to the mask layer
+     and shift the mask layer the appropriate amount of pixels to align with the
+     glass layer.
+     */
+    CALayer *maskLayer = backdropLayer.mask;
+    if (![maskLayer.name isEqualToString:@"stretched"]) {
+        maskLayer = [CALayer layer];
+        maskLayer.name = @"stretched";
+        maskLayer.backgroundColor = NSColor.blackColor.CGColor;
+        backdropLayer.mask = maskLayer;
+    }
+    CGRect maskRect = frameRect;
+    maskRect.origin.x += o;
+
+    maskLayer.transform = stretch;
+    maskLayer.frame = maskRect;
+    maskLayer.anchorPoint = CGPointZero;
+
+    backdropLayer.anchorPoint = CGPointZero;
+    backdropLayer.frame = CGRectInset(frameRect, -o, 0);
+    
+    // Make sure glass is in front of backdrop layer
+    [self addSublayer:backdropLayer];
+    [self addSublayer:glass];
+    [self addSublayer:self.separatorLayer];
+    
+    NSLog(@"%@", [NSApp windows]);
 }
 
 - (DKDockSize)currentSize {
-    return DKDockSizeFromSize(self.materialLayer.frame.size);
+    return DKDockSizeFromSize(self.glassLayer.frame.size);
 }
 
 #pragma mark - Properties
@@ -71,14 +130,14 @@
     separatorLayer.frame = self.separatorLayer.frame;
     [self.separatorLayer removeFromSuperlayer];
     [self addSublayer:separatorLayer];
-    *&ZKHookIvar(self, CALayer *, "_separatorLayer") = separatorLayer;
+    ZKHookIvar(self, CALayer *, "_separatorLayer") = separatorLayer;
 }
 
 - (void)setGlassLayer:(CALayer *)glassLayer {
     glassLayer.frame = self.glassLayer.frame;
     [self.glassLayer removeFromSuperlayer];
     [self addSublayer:glassLayer];
-    *&ZKHookIvar(self, CALayer *, "_glassLayer") = glassLayer;
+    ZKHookIvar(self, CALayer *, "_glassLayer") = glassLayer;
 }
 
 @end

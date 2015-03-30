@@ -7,9 +7,6 @@
 //
 #import "Dockify.h"
 
-#import "DKFloorLayer.h"
-#import "DKTileLayer.h"
-
 DKTheme *currentTheme = nil;
 //!TODO: load this from prefs somewhere
 DKThemeStyle currentStyle = DKTheme3DStyle;
@@ -24,7 +21,6 @@ __attribute__((__constructor__)) static void _DKInitialize() {
     [Dockify load];
 }
 
-
 // SIMBL support
 @implementation Dockify
 
@@ -32,14 +28,9 @@ __attribute__((__constructor__)) static void _DKInitialize() {
     if (loaded)
         return;
     
-    DLog(@"%ld, %ld", LONG_MAX, LONG_MIN);
-    
     loaded = YES;
     DLog(@"loaded");
     currentTheme = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:@"/Users/Alex/Desktop/Dock.dockify"]];
-    
-    ZKSwizzle(DKFloorLayer, DOCKFloorLayer);
-    ZKSwizzle(DKTileLayer, DOCKTileLayer);
     
     DLog(@"initialized");
 }

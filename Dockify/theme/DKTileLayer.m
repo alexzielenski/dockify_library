@@ -11,6 +11,10 @@
 
 @implementation DKTileLayer
 
++ (void)load {
+    ZKSwizzle(self, DOCKTileLayer);
+}
+
 - (void)layoutSublayers {
     self.opacity = currentTheme.iconOpacity;
 }
