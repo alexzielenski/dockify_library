@@ -6,14 +6,12 @@
 //  Copyright (c) 2015 Alexander Zielenski. All rights reserved.
 //
 
-#import "DKTileLayer.h"
 #import "Dockify.h"
+#import <QuartzCore/QuartzCore.h>
+#import "DOCKTileLayer.h"
 
+ZKSwizzleInterface(DKTileLayer, DOCKTileLayer, CALayer)
 @implementation DKTileLayer
-
-+ (void)load {
-    ZKSwizzle(self, DOCKTileLayer);
-}
 
 - (void)layoutSublayers {
     self.opacity = currentTheme.iconOpacity;
