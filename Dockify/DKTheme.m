@@ -10,7 +10,7 @@
 #import "DKTheme.h"
 #import "ZKColorParser.h"
 
-typedef NSString * DKFilename;
+typedef NSString *const DKFilename;
 DKFilename DKInfoFileName                = @"Info.plist";
 
 DKFilename DKLargeBackgroundFilename     = @"backgrounds/3d/large.png";
@@ -29,6 +29,9 @@ DKFilename DK2DTopEdgeFilename           = @"backgrounds/2d/topedge.png";;
 DKFilename DK2DLeftEdgeFilename          = @"backgrounds/2d/leftedge.png";;
 DKFilename DK2DRightEdgeFilename         = @"backgrounds/2d/rightedge.png";;
 DKFilename DK2DCenterFillFilename        = @"backgrounds/2d/centerfill.png";;
+DKFilename DK2DBottomLeftFilename        = @"backgrounds/2d/bottomleft.png";
+DKFilename DK2DBottomEdgeFilename        = @"backgrounds/2d/bottomedge.png";
+DKFilename DK2DBottomRightFilename       = @"backgrounds/2d/bottomright.png";
 
 DKFilename DKSeparator2DFilename         = @"separators/2d.png";
 DKFilename DKSeparator2DVerticalFilename = @"separators/2dvertical.png";
@@ -40,7 +43,7 @@ DKFilename DKIndicatorMediumFilename     = @"indicators/medium.png";
 DKFilename DKIndicatorLargeFilename      = @"indicators/large.png";
 DKFilename DKIndicatorXLargeFilename     = @"indicators/xlarge.png";
 
-typedef NSString * DKThemeKey;
+typedef NSString *const DKThemeKey;
 DKThemeKey DKAuthorThemeKey               = @"Author";
 DKThemeKey DKInfoThemeKey                 = @"Info";
 DKThemeKey DKReflectionOpacityThemeKey    = @"ReflectionOpacity";
@@ -66,9 +69,9 @@ extern DKDockSize DKDockSizeFromSize(CGSize size) {
     // medium 1280x128
     // small 900x128
     // xlarge 1280x86
-    if (size.height <= 86) {
+    if (size.height <= 86 && size.width > 1090) {
         return DKDockSizeExtraLarge;
-    } else if (size.height <= 98) {
+    } else if (size.height <= 98 && size.width > 1090) {
         return DKDockSizeLarge;
     }
 
@@ -80,16 +83,16 @@ extern DKDockSize DKDockSizeFromSize(CGSize size) {
     return DKDockSizeMedium;
 }
 
-extern BOOL DKStyleSupportsOrientation(DKThemeStyle style, DKDockOrientation orientation) {
-    switch (orientation) {
-        case DKDockOrientationBottom:
-            return YES;
-        case DKDockOrientationLeft:
-        case DKDockOrientationRight:
-            return (style & DKTheme2DStyle) == DKTheme2DStyle;
-        default:
-            break;
+extern DKDockSize DKDockSizeForIconSize(CGFloat iconSize) {
+    if (iconSize <= 44) {
+        return DKDockSizeSmall;
+    } else if (iconSize <= 72) {
+        return DKDockSizeMedium;
+    } else if (iconSize <= 100) {
+        return DKDockSizeLarge;
     }
+    
+    return DKDockSizeExtraLarge;
 }
 
 NSString *retinaNameofFilename(DKFilename filename) {
@@ -171,30 +174,34 @@ NSString *retinaNameofFilename(DKFilename filename) {
     return YES;
 }
 
-- (CGImageRef)imageWithName:(DKFilename)filename retina:(BOOL)flag {
-    NSString *key = [filename stringByAppendingString:flag ? @"@2x" : @""];
-    id obj = [self.imageCache objectForKey:key];
-    if (obj)
-        return (__bridge CGImageRef)obj;
+#pragma mark - Getting Images
 
-    NSURL *imageURL = [self.fileURL URLByAppendingPathComponent:flag ? retinaNameofFilename(filename) : filename];
+- (CGImageRef)imageWithName:(DKFilename)filename retina:(BOOL)flag {
+    NSString *key = flag ? retinaNameofFilename(filename) : filename;
+    NSBitmapImageRep *obj = [self.imageCache objectForKey:key];
+    if (obj)
+        return [obj CGImage];
+
+    NSURL *imageURL = [self.fileURL URLByAppendingPathComponent:key];
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:imageURL.path]) {
         if (flag) return [self imageWithName:filename retina:NO];
         else return nil;
     }
     
-    NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithData:[NSData dataWithContentsOfURL:imageURL]];
+    NSData *data = [NSData dataWithContentsOfURL:imageURL];
+    NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithData:data];
     if (!image) {
         if (flag) return [self imageWithName:filename retina:NO];
         else return nil;
     }
 
-    [self.imageCache setObject:(id)[image CGImage] forKey:key];
-    return [self imageWithName:filename retina:flag];
+    [self.imageCache setObject:image forKey:key];
+    return [image CGImage];
 }
 
 - (CGImageRef)scurveImageForSize:(DKDockSize)size retina:(BOOL)flag {
-    DKFilename filename = nil;
+    NSString *filename = nil;
     switch (size) {
         case DKDockSizeSmall:
             filename = DKSmallBackgroundFilename;
@@ -236,7 +243,7 @@ NSString *retinaNameofFilename(DKFilename filename) {
 }
 
 - (CGImageRef)indicatorForSize:(DKDockSize)size retina:(BOOL)flag {
-    DKFilename filename = nil;
+    NSString *filename = nil;
     switch (size) {
         case DKDockSizeSmall:
             filename = DKIndicatorSmallFilename;
@@ -275,7 +282,7 @@ NSString *retinaNameofFilename(DKFilename filename) {
 }
 
 - (CGImageRef)flatBackgroundImageForPart:(DKFlatPart)part retina:(BOOL)flag {
-    DKFilename filename = nil;
+    NSString *filename = nil;
     switch (part) {
         case DKFlatPartCenterFill:
             filename = DK2DCenterFillFilename;
@@ -295,10 +302,50 @@ NSString *retinaNameofFilename(DKFilename filename) {
         case DKFlatPartTopRight:
             filename = DK2DTopRightFilename;
             break;
+        case DKFlatPartBottomEdge:
+            filename = DK2DBottomEdgeFilename;
+            break;
+        case DKFlatPartBottomLeft:
+            filename = DK2DBottomLeftFilename;
+            break;
+        case DKFlatPartBottomRight:
+            filename = DK2DBottomRightFilename;
+            break;
     }
     
     return [self imageWithName:filename retina:flag];
 }
 
+#pragma mark - Style Support
+
+- (BOOL)supportsOrientation:(DKDockOrientation)orientation {
+    switch (orientation) {
+        case DKDockOrientationBottom:
+            return [self supportsStyle:DKTheme2DStyle | DKTheme3DStyle | DKThemeWideStyle];
+        case DKDockOrientationLeft:
+            return [self supportsStyle:DKTheme2DStyle];
+        case DKDockOrientationRight:
+            return [self supportsStyle:DKTheme2DStyle];
+        default:
+            break;
+    }
+}
+
+- (BOOL)supportsStyle:(DKThemeStyle)style {
+    return [self supportedStylesOfStyles:style] != DKThemeNoStyle;
+}
+
+- (DKThemeStyle)supportedStylesOfStyles:(DKThemeStyle)style {
+    DKThemeStyle winning = DKThemeNoStyle;
+    
+    if ((style & DKTheme3DStyle) && (self.styles & DKTheme3DStyle))
+        winning |= DKTheme3DStyle;
+    if ((style & DKTheme2DStyle) && (self.styles & DKTheme2DStyle))
+        winning |= DKTheme2DStyle;
+    if ((style & DKThemeWideStyle) && (self.styles & DKThemeWideStyle))
+        winning |= DKThemeWideStyle;
+    
+    return winning;
+}
 
 @end
