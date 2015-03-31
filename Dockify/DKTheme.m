@@ -63,6 +63,9 @@ DKThemeKey DKBorderWidthThemeKey          = @"BorderWidth";
 DKThemeKey DKBorderRadiusThemeKey         = @"BorderRadius";
 DKThemeKey DKBackgroundColorThemeKey      = @"BackgroundColor";
 DKThemeKey DKBackgroundBlurRadiusThemeKey = @"BackgroundBlurRadius";
+DKThemeKey DKIconShadowColorThemeKey      = @"IconShadowColor";
+DKThemeKey DKIconShadowDirectionThemeKey  = @"IconShadowDirection";
+DKThemeKey DKIconShadowRadiusThemeKey     = @"IconShadowRadius";
 
 extern DKDockSize DKDockSizeFromSize(CGSize size) {
     // large 1280x98px
@@ -102,6 +105,13 @@ NSString *retinaNameofFilename(DKFilename filename) {
     return f;
 }
 
+NSArray *componentsInString(NSString *input) {
+    input = [input stringByReplacingOccurrencesOfString:@" " withString:@""];
+    input = [input substringWithRange:NSMakeRange(1, input.length - 2)];
+    NSArray *inputComponents = [input componentsSeparatedByString:@","];
+    return inputComponents;
+}
+
 @interface DKTheme ()
 @property (strong) NSCache *imageCache;
 - (BOOL)_readFromDictionary:(NSDictionary *)dict;
@@ -139,24 +149,30 @@ NSString *retinaNameofFilename(DKFilename filename) {
     self.retina               = [dict[DKRetinaThemeKey] boolValue];
     self.name                 = dict[DKNameThemeKey];
     self.styles               = [dict[DKStylesThemeKey] unsignedIntegerValue];
-    self.showShadows          = [dict[DKShowShadowsThemeKey] boolValue];
     self.showSeparator        = [dict[DKShowSeparatorThemeKey] boolValue];
     self.version              = [dict[DKVersionThemeKey] doubleValue];
     self.iconOpacity          = [dict[DKIconOpacityThemeKey] doubleValue];
     self.borderRadius         = [dict[DKBorderRadiusThemeKey] doubleValue];
     self.borderWidth          = [dict[DKBorderWidthThemeKey] doubleValue];
     self.backgroundBlurRadius = [dict[DKBackgroundBlurRadiusThemeKey] doubleValue];
-
+    self.iconShadowRadius     = [dict[DKIconShadowRadiusThemeKey] doubleValue];
+    
     self.shadowColor     = [ZKColorParser colorFromString:dict[DKShadowColorThemeKey]] ?: [NSColor blackColor];
+    self.iconShadowColor = [ZKColorParser colorFromString:dict[DKIconShadowColorThemeKey] ?: [NSColor clearColor]];
     self.borderColor     = [ZKColorParser colorFromString:dict[DKBorderColorThemeKey]];
     self.backgroundColor = [ZKColorParser colorFromString:dict[DKBackgroundColorThemeKey]];
 
+    NSString *iconOffsetString = dict[DKIconShadowDirectionThemeKey];
+    NSArray *iconOffsetComponents = componentsInString(iconOffsetString);
+    if (iconOffsetComponents.count == 2) {
+        self.iconShadowDirection = CGSizeMake([iconOffsetComponents[0] doubleValue], [iconOffsetComponents[1] doubleValue]);
+    }
+    
     // shadow is in the format (x, y) where both specify offset directions for the shadow
-    NSString *shadowString = [dict[DKShadowDirectionThemeKey] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (shadowString) {
-        shadowString = [shadowString substringWithRange:NSMakeRange(1, shadowString.length - 2)];
+    NSString *shadowString = dict[DKShadowDirectionThemeKey];
+    NSArray *shadowComponents = componentsInString(shadowString);
 
-        NSArray *shadowComponents = [shadowString componentsSeparatedByString:@","];
+    if (shadowComponents.count == 2) {
         self.shadowDirection = CGSizeMake([shadowComponents[0] doubleValue], [shadowComponents[1] doubleValue]);
     } else {
         self.shadowDirection = CGSizeMake(0.0, -3.0);
@@ -167,6 +183,8 @@ NSString *retinaNameofFilename(DKFilename filename) {
     } else {
         self.shadowRadius = 10.0;
     }
+    
+    
 
     if (self.styles == DKThemeNoStyle)
         return NO;

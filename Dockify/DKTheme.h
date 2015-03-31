@@ -22,7 +22,6 @@ extern DKDockSize DKDockSizeForIconSize(CGFloat iconSize);
 @property (assign) DKThemeStyle styles;
 
 @property (assign) CGFloat reflectionOpacity;
-@property (assign) BOOL showShadows;
 @property (assign) BOOL showSeparator;
 @property (assign) CGFloat version;
 @property (assign) CGFloat backgroundOpacity;
@@ -35,6 +34,9 @@ extern DKDockSize DKDockSizeForIconSize(CGFloat iconSize);
 @property (strong) NSColor *borderColor;
 @property (strong) NSColor *backgroundColor;
 @property (assign) CGFloat backgroundBlurRadius;
+@property (strong) NSColor *iconShadowColor;
+@property (assign) CGSize iconShadowDirection;
+@property (assign) CGFloat iconShadowRadius;
 
 + (instancetype)themeWithContentsOfURL:(NSURL *)url;
 - (instancetype)initWithContentsOfURL:(NSURL *)url;

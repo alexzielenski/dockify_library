@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ZKSwizzle.h"
-#import "math.h"
 #import "DKConstants.h"
 #import "DKTheme.h"
 #import "DKPrefs.h"

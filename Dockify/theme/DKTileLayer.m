@@ -19,6 +19,14 @@ ZKSwizzleInterface(DKTileLayer, DOCKTileLayer, CALayer)
     if (!Prefs(enabled)) {
         return;
     }
+
+    DKTheme *currentTheme = Prefs(currentTheme);
+    
+    self.shadowOpacity = currentTheme.iconShadowColor.alphaComponent;
+    self.shadowColor = [currentTheme.iconShadowColor colorWithAlphaComponent:1.0].CGColor;
+    self.shadowRadius = currentTheme.iconShadowRadius;
+    self.shadowOffset = currentTheme.iconShadowDirection;
+    
     self.opacity = Prefs(currentTheme).iconOpacity;
 }
 
