@@ -12,14 +12,16 @@
 @implementation DKFloorLayer
 @dynamic separatorLayer, glassLayer, materialLayer;
 
-+ (void)load {    
-    ZKSwizzle(self, DOCKFloorLayer);
++ (void)load {
+    ZKSwizzle(DKFloorLayer, DOCKFloorLayer);
 }
 
 - (void)layoutSublayers {
     ZKOrig(void);
-    
-    if (!currentTheme)
+
+    if (!currentTheme ||
+        ![currentTheme supportsOrientation:ZKHookIvar(self, int, "_orientation")] ||
+        ![currentTheme supportsStyle:currentStyle])
         return;
     
 //    CGFloat fH = frontline.frame.size.height;
@@ -28,7 +30,7 @@
     CGFloat w  = self.bounds.size.width;
     
     ECMaterialLayer *material = self.materialLayer;
-    ((CALayer *)material).opacity = 0.0;
+    material.opacity = 0.0;
     
     CALayer *glass = self.glassLayer;
     
@@ -43,11 +45,6 @@
     material.contents             = nil;
     
 //    self.separatorLayer.hidden = !currentTheme.showSeparator;
-    self.separatorLayer.backgroundColor = NSColor.blueColor.CGColor;
-    CGRect sepFrame = self.separatorLayer.frame;
-    sepFrame.origin.x -= 50;
-    sepFrame.size.width += 100;
-    self.separatorLayer.frame = sepFrame;
     
     CGRect frameRect = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, w, h);
     glass.frame = frameRect;
@@ -61,7 +58,7 @@
     glass.transform       = stretch;
     glass.backgroundColor = [currentTheme.backgroundColor colorWithAlphaComponent:0.25].CGColor;
     glass.cornerRadius    = currentTheme.borderRadius;
-    glass.contents        = (__bridge id)([currentTheme scurveImageForSize:self.currentSize retina:YES]);
+    glass.contents        = (__bridge id)([currentTheme scurveImageForSize:self.currentSize retina:self.contentsScale == 2.0]);
 
     glass.borderColor   = currentTheme.borderColor.CGColor;
     glass.borderWidth   = currentTheme.borderWidth;
@@ -104,8 +101,6 @@
     [self addSublayer:backdropLayer];
     [self addSublayer:glass];
     [self addSublayer:self.separatorLayer];
-    
-    NSLog(@"%@", [NSApp windows]);
 }
 
 - (DKDockSize)currentSize {

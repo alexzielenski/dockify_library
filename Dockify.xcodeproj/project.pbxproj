@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA03704A1ACA25B700D8E531 /* DKPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0370491ACA25B700D8E531 /* DKPrefs.m */; };
 		FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */; };
 		FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5D1A913C58009FA889 /* Dockify.m */; };
 		FA6CBD631A913CD9009FA889 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6CBD621A913CD9009FA889 /* QuartzCore.framework */; };
@@ -16,9 +17,14 @@
 		FA6CBD9D1A918748009FA889 /* DKTileLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD9C1A918748009FA889 /* DKTileLayer.m */; };
 		FA6CBDA01A9187ED009FA889 /* DKFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD9F1A9187ED009FA889 /* DKFloorLayer.m */; };
 		FA6CBDA71A918834009FA889 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBDA51A918834009FA889 /* math.c */; };
+		FAADA01A1ACB2C6E0027BBDB /* DKindicatorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0370401ACA0E8900D8E531 /* DOCKSeparatorTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKSeparatorTile.h; path = dump/DOCKSeparatorTile.h; sourceTree = "<group>"; };
+		FA0370411ACA0E8900D8E531 /* Tile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tile.h; path = dump/Tile.h; sourceTree = "<group>"; };
+		FA0370481ACA25B700D8E531 /* DKPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPrefs.h; sourceTree = "<group>"; };
+		FA0370491ACA25B700D8E531 /* DKPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPrefs.m; sourceTree = "<group>"; };
 		FA6CBD501A913AD9009FA889 /* Dockify.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dockify.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6CBD541A913AD9009FA889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKSwizzle.h; path = external/ZKSwizzle/ZKSwizzle/ZKSwizzle.h; sourceTree = "<group>"; };
@@ -32,7 +38,6 @@
 		FA6CBD701A9161F2009FA889 /* DKTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKTheme.m; sourceTree = "<group>"; };
 		FA6CBD721A9163C3009FA889 /* ZKColorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKColorParser.h; path = helpers/ZKColorParser.h; sourceTree = "<group>"; };
 		FA6CBD731A9163C3009FA889 /* ZKColorParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKColorParser.m; path = helpers/ZKColorParser.m; sourceTree = "<group>"; };
-		FA6CBD9B1A918748009FA889 /* DKTileLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKTileLayer.h; path = theme/DKTileLayer.h; sourceTree = "<group>"; };
 		FA6CBD9C1A918748009FA889 /* DKTileLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKTileLayer.m; path = theme/DKTileLayer.m; sourceTree = "<group>"; };
 		FA6CBD9E1A9187ED009FA889 /* DKFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKFloorLayer.h; path = theme/DKFloorLayer.h; sourceTree = "<group>"; };
 		FA6CBD9F1A9187ED009FA889 /* DKFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKFloorLayer.m; path = theme/DKFloorLayer.m; sourceTree = "<group>"; };
@@ -41,6 +46,8 @@
 		FA6CBDA51A918834009FA889 /* math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = math.c; path = helpers/math.c; sourceTree = "<group>"; };
 		FA6CBDA61A918834009FA889 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math.h; path = helpers/math.h; sourceTree = "<group>"; };
 		FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKTileLayer.h; path = dump/DOCKTileLayer.h; sourceTree = "<group>"; };
+		FAADA0181ACB2C5B0027BBDB /* DOCKIndicatorLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKIndicatorLayer.h; path = dump/DOCKIndicatorLayer.h; sourceTree = "<group>"; };
+		FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKindicatorLayer.m; path = theme/DKindicatorLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +92,8 @@
 				FA6CBD5D1A913C58009FA889 /* Dockify.m */,
 				FA6CBD6F1A9161F2009FA889 /* DKTheme.h */,
 				FA6CBD701A9161F2009FA889 /* DKTheme.m */,
+				FA0370481ACA25B700D8E531 /* DKPrefs.h */,
+				FA0370491ACA25B700D8E531 /* DKPrefs.m */,
 				FA6CBDA21A9187FD009FA889 /* dump */,
 				FA6CBDA11A9187F6009FA889 /* theme */,
 				FA6CBD531A913AD9009FA889 /* Supporting Files */,
@@ -105,8 +114,8 @@
 			children = (
 				FA6CBD9E1A9187ED009FA889 /* DKFloorLayer.h */,
 				FA6CBD9F1A9187ED009FA889 /* DKFloorLayer.m */,
-				FA6CBD9B1A918748009FA889 /* DKTileLayer.h */,
 				FA6CBD9C1A918748009FA889 /* DKTileLayer.m */,
+				FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */,
 			);
 			name = theme;
 			sourceTree = "<group>";
@@ -114,6 +123,9 @@
 		FA6CBDA21A9187FD009FA889 /* dump */ = {
 			isa = PBXGroup;
 			children = (
+				FAADA0181ACB2C5B0027BBDB /* DOCKIndicatorLayer.h */,
+				FA0370401ACA0E8900D8E531 /* DOCKSeparatorTile.h */,
+				FA0370411ACA0E8900D8E531 /* Tile.h */,
 				FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */,
 				FA6CBDA31A918821009FA889 /* DOCKFloorLayer.h */,
 				FA6CBDA41A918821009FA889 /* ECMaterialLayer.h */,
@@ -217,6 +229,8 @@
 			files = (
 				FA6CBD9D1A918748009FA889 /* DKTileLayer.m in Sources */,
 				FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */,
+				FAADA01A1ACB2C6E0027BBDB /* DKindicatorLayer.m in Sources */,
+				FA03704A1ACA25B700D8E531 /* DKPrefs.m in Sources */,
 				FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */,
 				FA6CBDA01A9187ED009FA889 /* DKFloorLayer.m in Sources */,
 				FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */,

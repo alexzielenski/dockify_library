@@ -10,6 +10,7 @@
 #import "DKConstants.h"
 
 extern DKDockSize DKDockSizeFromSize(CGSize size);
+extern DKDockSize DKDockSizeForIconSize(CGFloat iconSize);
 
 @interface DKTheme : NSObject
 @property (copy) NSURL *fileURL;
@@ -44,4 +45,9 @@ extern DKDockSize DKDockSizeFromSize(CGSize size);
 - (CGImageRef)indicatorForSize:(DKDockSize)size retina:(BOOL)flag;
 - (CGImageRef)wideBackgroundImageForSize:(DKDockSize)size retina:(BOOL)flag;
 - (CGImageRef)flatBackgroundImageForPart:(DKFlatPart)part retina:(BOOL)flag;
+
+- (BOOL)supportsOrientation:(DKDockOrientation)orientation;
+- (DKThemeStyle)supportedStylesOfStyles:(DKThemeStyle)style;
+- (BOOL)supportsStyle:(DKThemeStyle)style;
+
 @end
