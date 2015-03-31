@@ -8,6 +8,7 @@
 
 #import "Dockify.h"
 #import "DKFloorLayer.h"
+#import "math.h"
 
 @implementation DKFloorLayer
 @dynamic separatorLayer, glassLayer, materialLayer;
@@ -19,9 +20,13 @@
 - (void)layoutSublayers {
     ZKOrig(void);
 
+    DKTheme *currentTheme = Prefs(currentTheme);
+    DKThemeStyle currentStyle = Prefs(currentStyle);
+    
     if (!currentTheme ||
         ![currentTheme supportsOrientation:ZKHookIvar(self, int, "_orientation")] ||
-        ![currentTheme supportsStyle:currentStyle])
+        ![currentTheme supportsStyle:currentStyle] ||
+        !Prefs(enabled))
         return;
     
 //    CGFloat fH = frontline.frame.size.height;

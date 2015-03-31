@@ -64,6 +64,10 @@ static void prefsChanged(CFNotificationCenterRef center, void *observer, CFStrin
                                         (__bridge CFStringRef)DKPrefsChangedNotification,
                                         NULL,
                                         CFNotificationSuspensionBehaviorDeliverImmediately);
+        
+        NSString *currentThemePath = GetPrefsValue(DKPrefsThemeKey);
+        if (currentThemePath)
+            self._currentTheme = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:currentThemePath]];
     }
     
     return self;

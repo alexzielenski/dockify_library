@@ -14,11 +14,20 @@ ZKSwizzleInterface(DKTileLayer, DOCKTileLayer, CALayer)
 @implementation DKTileLayer
 
 - (void)layoutSublayers {
-    self.opacity = currentTheme.iconOpacity;
+    ZKOrig(void);
+    
+    if (!Prefs(enabled)) {
+        return;
+    }
+    self.opacity = Prefs(currentTheme).iconOpacity;
 }
 
 - (float)opacity {
-    return currentTheme.iconOpacity;
+    if (!Prefs(enabled)) {
+        return ZKOrig(float);
+    }
+    
+    return Prefs(currentTheme).iconOpacity;
 }
 
 @end

@@ -48,6 +48,7 @@
 		FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKTileLayer.h; path = dump/DOCKTileLayer.h; sourceTree = "<group>"; };
 		FAADA0181ACB2C5B0027BBDB /* DOCKIndicatorLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKIndicatorLayer.h; path = dump/DOCKIndicatorLayer.h; sourceTree = "<group>"; };
 		FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKindicatorLayer.m; path = theme/DKindicatorLayer.m; sourceTree = "<group>"; };
+		FAADA01B1ACB41150027BBDB /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,7 @@
 		FA6CBD521A913AD9009FA889 /* Dockify */ = {
 			isa = PBXGroup;
 			children = (
+				FAADA01B1ACB41150027BBDB /* Prefix.pch */,
 				FA6CBDA81A918836009FA889 /* helpers */,
 				FA6CBD6D1A913EE1009FA889 /* DKConstants.h */,
 				FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */,
@@ -325,6 +327,8 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Dockify/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Opee/Extensions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -344,6 +348,8 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Dockify/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Opee/Extensions";
 				PRODUCT_NAME = "$(TARGET_NAME)";

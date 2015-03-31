@@ -11,9 +11,7 @@
 #import "math.h"
 #import "DKConstants.h"
 #import "DKTheme.h"
+#import "DKPrefs.h"
 
 #define DLog(fmt, ...) NSLog((@"dockify: " fmt),  ##__VA_ARGS__)
 #define D(fmt) DLog(@"%@", fmt)
-
-extern DKTheme *currentTheme;
-extern DKThemeStyle currentStyle;

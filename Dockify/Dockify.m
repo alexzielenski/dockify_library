@@ -7,10 +7,6 @@
 //
 #import "Dockify.h"
 
-DKTheme *currentTheme = nil;
-//!TODO: load this from prefs somewhere
-DKThemeStyle currentStyle = DKTheme3DStyle;
-
 static BOOL loaded = NO;
 
 @interface Dockify : NSObject
@@ -30,7 +26,10 @@ __attribute__((__constructor__)) static void _DKInitialize() {
     
     loaded = YES;
     DLog(@"loaded");
-    currentTheme = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:@"/Users/Alex/Desktop/Dock.dockify"]];
+    
+    Prefs(currentStyle) = DKTheme3DStyle;
+    Prefs(currentTheme) = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:@"/Users/Alex/Desktop/Dock.dockify"]];
+    Prefs(enabled) = YES;
     
     DLog(@"initialized");
 }
