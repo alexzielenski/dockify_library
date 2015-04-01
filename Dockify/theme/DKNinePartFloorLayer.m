@@ -7,6 +7,7 @@
 //
 
 #import "DKNinePartFloorLayer.h"
+#import "math.h"
 
 @interface DKNinePartFloorLayer () {
     dispatch_once_t setupFinishedToken;
@@ -41,47 +42,67 @@
     // Offset the coordinates of some of the fills just incase the fixed-size elements
     // have different sizes. This is because are anchors are in the center of a certain axis
     // and will expand out a certain width from there equally in both directions
-    CGFloat topEdgeOffsetX = (topLeftSize.width - topRightSize.width) / 2;
-    CGFloat leftEdgeOffsetY = (bottomLeftSize.height - topLeftSize.height) / 2;
+    CGFloat topEdgeOffsetX    = (topLeftSize.width - topRightSize.width) / 2;
+    CGFloat leftEdgeOffsetY   = (bottomLeftSize.height - topLeftSize.height) / 2;
     CGFloat centerFillOffsetX = (leftEdgeSize.width - rightEdgeSize.width) / 2;
     CGFloat centerFillOffsetY = (bottomEdgeSize.height - topEdgeSize.height) / 2;
-    CGFloat rightEdgeOffsetY = (bottomRightSize.height - topRightSize.height) / 2;
+    CGFloat rightEdgeOffsetY  = (bottomRightSize.height - topRightSize.height) / 2;
     CGFloat bottomEdgeOffsetX = (bottomLeftSize.width - bottomRightSize.width) / 2;
     
-    self.topLeft.frame     = CGRectMake(0.0,
-                                        CGRectGetMaxY(self.bounds),
-                                        topLeftSize.width, topLeftSize.height);
-    self.topEdge.frame     = CGRectMake(CGRectGetMidX(self.bounds) + topEdgeOffsetX,
-                                        CGRectGetMaxY(self.bounds),
+    self.topLeft.bounds     = CGRectMake(0.0, 0.0,
+                                         topLeftSize.width, topLeftSize.height);
+    self.topLeft.position = CGPointMake(0.0, CGRectGetMaxY(self.bounds));
+    
+    self.topEdge.bounds     = CGRectMake(0.0, 0.0,
                                         CGRectGetWidth(self.bounds) - topLeftSize.width - topRightSize.height, topEdgeSize.height);
-    self.topRight.frame    = CGRectMake(CGRectGetMaxX(self.bounds),
-                                        CGRectGetMaxY(self.bounds),
-                                        topRightSize.width,
-                                        topRightSize.height);
-    self.leftEdge.frame    = CGRectMake(0.0,
-                                        CGRectGetMidY(self.bounds) + leftEdgeOffsetY,
+    
+    self.topEdge.position = CGPointMake(CGRectGetMidX(self.bounds) + topEdgeOffsetX, CGRectGetMaxY(self.bounds));
+    
+    self.topRight.bounds    = CGRectMake(0.0, 0.0,
+                                         topRightSize.width,
+                                         topRightSize.height);
+    self.topRight.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds));
+    
+    self.leftEdge.bounds    = CGRectMake(0.0, 0.0,
                                         leftEdgeSize.width,
-                                        CGRectGetHeight(self.bounds) - topLeftSize.height - bottomLeftSize.height);
-    self.centerFill.frame  = CGRectMake(CGRectGetMidX(self.bounds) + centerFillOffsetX,
-                                        CGRectGetMidY(self.bounds) + centerFillOffsetY,
-                                        CGRectGetWidth(self.bounds) - leftEdgeSize.width - rightEdgeSize.width,
-                                        CGRectGetHeight(self.bounds) - topEdgeSize.height - bottomEdgeSize.height);
-    self.rightEdge.frame   = CGRectMake(CGRectGetMaxX(self.bounds),
-                                        CGRectGetMidY(self.bounds) + rightEdgeOffsetY,
+                                         CGRectGetHeight(self.bounds) - topLeftSize.height - bottomLeftSize.height);
+    self.leftEdge.position = CGPointMake(0.0, CGRectGetMidY(self.bounds) + leftEdgeOffsetY);
+    
+    self.centerFill.bounds  = CGRectMake(0.0, 0.0,
+                                         CGRectGetWidth(self.bounds) - leftEdgeSize.width - rightEdgeSize.width,
+                                         CGRectGetHeight(self.bounds) - topEdgeSize.height - bottomEdgeSize.height);
+    self.centerFill.position = CGPointMake(CGRectGetMidX(self.bounds) + centerFillOffsetX, CGRectGetMidY(self.bounds) + centerFillOffsetY);
+    
+    self.rightEdge.bounds   = CGRectMake(0.0, 0.0,
                                         rightEdgeSize.width,
-                                        CGRectGetHeight(self.bounds) - topRightSize.height - bottomRightSize.height);
-    self.bottomLeft.frame  = CGRectMake(0.0,
-                                        0.0,
+                                         CGRectGetHeight(self.bounds) - topRightSize.height - bottomRightSize.height);
+    self.rightEdge.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds) + rightEdgeOffsetY);
+    self.bottomLeft.bounds  = CGRectMake(0.0, 0.0,
                                         bottomLeftSize.width,
                                         bottomLeftSize.height);
-    self.bottomEdge.frame  = CGRectMake(CGRectGetMidX(self.bounds) + bottomEdgeOffsetX,
-                                        0.0,
+    self.bottomLeft.position = CGPointZero;
+    self.bottomEdge.bounds  = CGRectMake(0.0, 0.0,
                                         CGRectGetWidth(self.bounds) - bottomLeftSize.width - bottomRightSize.width,
                                         bottomEdgeSize.height);
-    self.bottomRight.frame = CGRectMake(CGRectGetMaxX(self.bounds),
-                                        0.0,
+    self.bottomEdge.position = CGPointMake(CGRectGetMidX(self.bounds) + bottomEdgeOffsetX, 0.0);
+    self.bottomRight.bounds = CGRectMake(0.0, 0.0,
                                         bottomRightSize.width,
                                         bottomRightSize.height);
+    self.bottomRight.position = CGPointMake(CGRectGetMaxX(self.bounds), 0.0);
+    
+    switch (self.orientation) {
+        case DKDockOrientationBottom:
+            self.transform = CATransform3DIdentity;
+            break;
+        case DKDockOrientationLeft:
+            self.transform = DKMakeTransformLeft();
+            break;
+        case DKDockOrientationRight:
+            self.transform = DKMakeTransformRight();
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)setupIfNeeded {
