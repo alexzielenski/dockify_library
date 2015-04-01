@@ -18,6 +18,8 @@
 		FA6CBDA01A9187ED009FA889 /* DKFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD9F1A9187ED009FA889 /* DKFloorLayer.m */; };
 		FA6CBDA71A918834009FA889 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBDA51A918834009FA889 /* math.c */; };
 		FAADA01A1ACB2C6E0027BBDB /* DKindicatorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */; };
+		FAE4FAA71ACB6FE9003283C5 /* DKNinePartFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */; };
+		FAE4FAAA1ACC4DFA003283C5 /* DKLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		FAADA0181ACB2C5B0027BBDB /* DOCKIndicatorLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKIndicatorLayer.h; path = dump/DOCKIndicatorLayer.h; sourceTree = "<group>"; };
 		FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKindicatorLayer.m; path = theme/DKindicatorLayer.m; sourceTree = "<group>"; };
 		FAADA01B1ACB41150027BBDB /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		FAE4FAA51ACB6FE9003283C5 /* DKNinePartFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKNinePartFloorLayer.h; path = theme/DKNinePartFloorLayer.h; sourceTree = "<group>"; };
+		FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKNinePartFloorLayer.m; path = theme/DKNinePartFloorLayer.m; sourceTree = "<group>"; };
+		FAE4FAA81ACC4DD1003283C5 /* DOCKLabelLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKLabelLayer.h; path = dump/DOCKLabelLayer.h; sourceTree = "<group>"; };
+		FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKLabelLayer.m; path = theme/DKLabelLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,9 @@
 				FA6CBD9F1A9187ED009FA889 /* DKFloorLayer.m */,
 				FA6CBD9C1A918748009FA889 /* DKTileLayer.m */,
 				FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */,
+				FAE4FAA51ACB6FE9003283C5 /* DKNinePartFloorLayer.h */,
+				FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */,
+				FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */,
 			);
 			name = theme;
 			sourceTree = "<group>";
@@ -130,6 +139,7 @@
 				FA0370411ACA0E8900D8E531 /* Tile.h */,
 				FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */,
 				FA6CBDA31A918821009FA889 /* DOCKFloorLayer.h */,
+				FAE4FAA81ACC4DD1003283C5 /* DOCKLabelLayer.h */,
 				FA6CBDA41A918821009FA889 /* ECMaterialLayer.h */,
 			);
 			name = dump;
@@ -231,12 +241,14 @@
 			files = (
 				FA6CBD9D1A918748009FA889 /* DKTileLayer.m in Sources */,
 				FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */,
+				FAE4FAA71ACB6FE9003283C5 /* DKNinePartFloorLayer.m in Sources */,
 				FAADA01A1ACB2C6E0027BBDB /* DKindicatorLayer.m in Sources */,
 				FA03704A1ACA25B700D8E531 /* DKPrefs.m in Sources */,
 				FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */,
 				FA6CBDA01A9187ED009FA889 /* DKFloorLayer.m in Sources */,
 				FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */,
 				FA6CBD741A9163C3009FA889 /* ZKColorParser.m in Sources */,
+				FAE4FAAA1ACC4DFA003283C5 /* DKLabelLayer.m in Sources */,
 				FA6CBDA71A918834009FA889 /* math.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
