@@ -20,14 +20,14 @@ ZKSwizzleInterface(DKLabelLayer, DOCKLabelLayer, CALayer)
     CALayer *content = [backdrop valueForKey:@"contentLayer"];
     
     if (backdrop.contents) {
-        NSLog(@"bdrop %@", backdrop.contents);
+//        NSLog(@"bdrop %@", backdrop.contents);
     }
     
     if (content.contents) {
-        NSLog(@"cnts %@", content.contents);
+//        NSLog(@"cnts %@", content.contents);
 //        CGImageRef image = (__bridge CGImageRef)(content.contents);
-        NSLog(@"%@", backdrop.shadowPath);
-        NSLog(@"%@", backdrop.backgroundColor);
+//        NSLog(@"%@", backdrop.shadowPath);
+//        NSLog(@"%@", backdrop.backgroundColor);
 //        [[[[NSBitmapImageRep alloc] initWithCGImage:image] representationUsingType:NSPNGFileType properties:nil] writeToFile:@"/Users/Alex/Desktop/a.png" atomically:NO];
     }
 
@@ -44,7 +44,6 @@ ZKSwizzleInterface(DKTile, Tile, NSObject)
 @implementation DKTile
 
 - (id)statusLabelForType:(int)arg1 {
-    NSLog(@"%d %@", arg1, ZKOrig(id, arg1));
     return ZKOrig(id, arg1);
 }
 
