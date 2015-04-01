@@ -13,6 +13,7 @@
 @interface DKFloorLayer : CALayer
 @property CALayer *separatorLayer;
 @property CALayer *glassLayer;
+@property DKDockOrientation orientation;
 @property (readonly) ECMaterialLayer *materialLayer;
 - (DKDockSize)currentSize;
 @end
