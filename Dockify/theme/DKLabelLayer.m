@@ -50,7 +50,7 @@ ZKSwizzleInterface(DKTile, Tile, NSObject)
 - (void)update {
     ZKOrig(void);
     
-    [self setLabel:@"TEST" stripAppSuffix:false];
+//    [self setLabel:@"TEST" stripAppSuffix:false];
 }
 
 - (void)setStatusLabel:(id)arg1 forType:(int)arg2 {
