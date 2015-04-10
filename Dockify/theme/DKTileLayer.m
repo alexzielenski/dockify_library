@@ -11,6 +11,11 @@
 #import "DOCKTileLayer.h"
 
 ZKSwizzleInterface(DKTileLayer, DOCKTileLayer, CALayer)
+
+@interface DKTileLayer (DOCKTileLayer)
+@property(readonly, nonatomic) CALayer *labelLayer; // @synthesize labelLayer=_statusLabelLayer;
+@end
+
 @implementation DKTileLayer
 
 - (void)layoutSublayers {

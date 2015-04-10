@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA03704A1ACA25B700D8E531 /* DKPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0370491ACA25B700D8E531 /* DKPrefs.m */; };
+		FA5861FF1AD76253002142DE /* DKTrashTIle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5861FE1AD76253002142DE /* DKTrashTIle.m */; };
+		FA5862041AD766EC002142DE /* SGDirWatchdog.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5862031AD766EC002142DE /* SGDirWatchdog.m */; };
 		FA6CBD5C1A913B60009FA889 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5B1A913B60009FA889 /* ZKSwizzle.m */; };
 		FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6CBD5D1A913C58009FA889 /* Dockify.m */; };
 		FA6CBD631A913CD9009FA889 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6CBD621A913CD9009FA889 /* QuartzCore.framework */; };
@@ -27,6 +29,11 @@
 		FA0370411ACA0E8900D8E531 /* Tile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tile.h; path = dump/Tile.h; sourceTree = "<group>"; };
 		FA0370481ACA25B700D8E531 /* DKPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKPrefs.h; sourceTree = "<group>"; };
 		FA0370491ACA25B700D8E531 /* DKPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKPrefs.m; sourceTree = "<group>"; };
+		FA5861FD1AD76245002142DE /* DOCKTrashTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKTrashTile.h; path = dump/DOCKTrashTile.h; sourceTree = "<group>"; };
+		FA5861FE1AD76253002142DE /* DKTrashTIle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKTrashTIle.m; path = theme/DKTrashTIle.m; sourceTree = "<group>"; };
+		FA5862001AD7647F002142DE /* ECStatusLabelDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ECStatusLabelDescription.h; path = dump/ECStatusLabelDescription.h; sourceTree = "<group>"; };
+		FA5862021AD766EC002142DE /* SGDirWatchdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDirWatchdog.h; sourceTree = "<group>"; };
+		FA5862031AD766EC002142DE /* SGDirWatchdog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDirWatchdog.m; sourceTree = "<group>"; };
 		FA6CBD501A913AD9009FA889 /* Dockify.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dockify.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6CBD541A913AD9009FA889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6CBD5A1A913B60009FA889 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKSwizzle.h; path = external/ZKSwizzle/ZKSwizzle/ZKSwizzle.h; sourceTree = "<group>"; };
@@ -70,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA5862011AD766EC002142DE /* DirectoryWatchdog */ = {
+			isa = PBXGroup;
+			children = (
+				FA5862021AD766EC002142DE /* SGDirWatchdog.h */,
+				FA5862031AD766EC002142DE /* SGDirWatchdog.m */,
+			);
+			name = DirectoryWatchdog;
+			path = external/DirectoryWatchdog;
+			sourceTree = "<group>";
+		};
 		FA6CBD471A913AD9009FA889 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +108,7 @@
 		FA6CBD521A913AD9009FA889 /* Dockify */ = {
 			isa = PBXGroup;
 			children = (
+				FA5862011AD766EC002142DE /* DirectoryWatchdog */,
 				FAADA01B1ACB41150027BBDB /* Prefix.pch */,
 				FA6CBDA81A918836009FA889 /* helpers */,
 				FA6CBD6D1A913EE1009FA889 /* DKConstants.h */,
@@ -127,6 +145,7 @@
 				FAE4FAA51ACB6FE9003283C5 /* DKNinePartFloorLayer.h */,
 				FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */,
 				FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */,
+				FA5861FE1AD76253002142DE /* DKTrashTIle.m */,
 			);
 			name = theme;
 			sourceTree = "<group>";
@@ -137,10 +156,12 @@
 				FAADA0181ACB2C5B0027BBDB /* DOCKIndicatorLayer.h */,
 				FA0370401ACA0E8900D8E531 /* DOCKSeparatorTile.h */,
 				FA0370411ACA0E8900D8E531 /* Tile.h */,
+				FA5861FD1AD76245002142DE /* DOCKTrashTile.h */,
 				FA6CBDA91A918870009FA889 /* DOCKTileLayer.h */,
 				FA6CBDA31A918821009FA889 /* DOCKFloorLayer.h */,
 				FAE4FAA81ACC4DD1003283C5 /* DOCKLabelLayer.h */,
 				FA6CBDA41A918821009FA889 /* ECMaterialLayer.h */,
+				FA5862001AD7647F002142DE /* ECStatusLabelDescription.h */,
 			);
 			name = dump;
 			sourceTree = "<group>";
@@ -247,9 +268,11 @@
 				FA6CBD711A9161F2009FA889 /* DKTheme.m in Sources */,
 				FA6CBDA01A9187ED009FA889 /* DKFloorLayer.m in Sources */,
 				FA6CBD5E1A913C58009FA889 /* Dockify.m in Sources */,
+				FA5862041AD766EC002142DE /* SGDirWatchdog.m in Sources */,
 				FA6CBD741A9163C3009FA889 /* ZKColorParser.m in Sources */,
 				FAE4FAAA1ACC4DFA003283C5 /* DKLabelLayer.m in Sources */,
 				FA6CBDA71A918834009FA889 /* math.c in Sources */,
+				FA5861FF1AD76253002142DE /* DKTrashTIle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
