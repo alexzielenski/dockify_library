@@ -26,9 +26,9 @@ __attribute__((__constructor__)) static void _DKInitialize() {
     
     loaded = YES;
     DLog(@"loaded");
-    
-    Prefs(currentStyle) = DKTheme2DStyle;
-    Prefs(currentTheme) = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:@"/Users/Alex/Desktop/Dock.dockify"]];
+        
+    Prefs(currentStyle) = DKTheme3DStyle;
+    Prefs(currentTheme) = [DKTheme themeWithContentsOfURL:[NSURL fileURLWithPath:[@"~/Desktop/Dock.dockify" stringByExpandingTildeInPath]]];
     Prefs(enabled) = YES;
     
     DLog(@"initialized");

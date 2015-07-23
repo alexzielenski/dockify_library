@@ -22,6 +22,7 @@
 		FAADA01A1ACB2C6E0027BBDB /* DKindicatorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA0191ACB2C6E0027BBDB /* DKindicatorLayer.m */; };
 		FAE4FAA71ACB6FE9003283C5 /* DKNinePartFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */; };
 		FAE4FAAA1ACC4DFA003283C5 /* DKLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */; };
+		FAED9DE21B609F8900937635 /* DKTile.m in Sources */ = {isa = PBXBuildFile; fileRef = FAED9DE11B609F8900937635 /* DKTile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKNinePartFloorLayer.m; path = theme/DKNinePartFloorLayer.m; sourceTree = "<group>"; };
 		FAE4FAA81ACC4DD1003283C5 /* DOCKLabelLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DOCKLabelLayer.h; path = dump/DOCKLabelLayer.h; sourceTree = "<group>"; };
 		FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKLabelLayer.m; path = theme/DKLabelLayer.m; sourceTree = "<group>"; };
+		FAED9DE11B609F8900937635 /* DKTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKTile.m; path = theme/DKTile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				FAE4FAA61ACB6FE9003283C5 /* DKNinePartFloorLayer.m */,
 				FAE4FAA91ACC4DFA003283C5 /* DKLabelLayer.m */,
 				FA5861FE1AD76253002142DE /* DKTrashTIle.m */,
+				FAED9DE11B609F8900937635 /* DKTile.m */,
 			);
 			name = theme;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				FA6CBD741A9163C3009FA889 /* ZKColorParser.m in Sources */,
 				FAE4FAAA1ACC4DFA003283C5 /* DKLabelLayer.m in Sources */,
 				FA6CBDA71A918834009FA889 /* math.c in Sources */,
+				FAED9DE21B609F8900937635 /* DKTile.m in Sources */,
 				FA5861FF1AD76253002142DE /* DKTrashTIle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,7 +319,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -349,7 +353,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

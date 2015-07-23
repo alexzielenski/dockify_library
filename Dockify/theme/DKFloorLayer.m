@@ -21,27 +21,28 @@
 @dynamic separatorLayer, glassLayer, materialLayer, orientation, ninePartLayer;
 
 + (void)load {
-    ZKSwizzle(DKFloorLayer, DOCKFloorLayer);
+    ZKSwizzle(DKFloorLayer, Dock.FloorLayer);
 }
 
 - (void)layoutSublayers {
     ZKOrig(void);
-
+    
     DKTheme *currentTheme = Prefs(currentTheme);
     DKThemeStyle currentStyle = Prefs(currentStyle);
-    
+
     if (!currentTheme ||
-        ![currentTheme supportsOrientation:ZKHookIvar(self, int, "_orientation")] ||
+        ![currentTheme supportsOrientation:ZKHookIvar(self, int, "orientation")] ||
         ![currentTheme supportsStyle:currentStyle] ||
         !Prefs(enabled))
         return;
-    
+
     self.separatorLayer.hidden = !currentTheme.showSeparator;
     
     ECMaterialLayer *material = self.materialLayer;
-    material.opacity = 0.0;
+    material.opacity            = 0.0;
     material.reduceTransparency = NO;
     material.blurRadius         = currentTheme.backgroundBlurRadius;
+    
     /*
      BackdropLayer is what creates the blur behind the dock
      We don't want to apply the transform directly to it because that
@@ -50,6 +51,7 @@
      and shift the mask layer the appropriate amount of pixels to align with the
      glass layer.
      */
+
     CALayer *backdropLayer = ZKHookIvar(material, CALayer *, "_backdropLayer");
     
     // setting the blur radius to zero on the material has unwanted effects
@@ -69,12 +71,12 @@
     material.contents             = nil;
     
     if (![maskLayer.name isEqualToString:@"stretched"]) {
-        maskLayer = [CALayer layer];
-        maskLayer.name = @"stretched";
+        maskLayer                 = [CALayer layer];
+        maskLayer.name            = @"stretched";
         maskLayer.backgroundColor = NSColor.blackColor.CGColor;
-        backdropLayer.mask = maskLayer;
+        backdropLayer.mask        = maskLayer;
     }
-    maskLayer.anchorPoint = CGPointZero;
+    maskLayer.anchorPoint     = CGPointZero;
     backdropLayer.anchorPoint = CGPointZero;
     
     [self layout2DDock];
@@ -148,7 +150,7 @@
                                                     w + o, 0,
                                                     0, h,
                                                     w, h);
-    glass.contentsGravity = kCAGravityResize;
+//    glass.contentsGravity = kCAGravityResize;
     glass.anchorPoint     = CGPointZero;
     glass.transform       = stretch;
     glass.backgroundColor = [currentTheme.backgroundColor colorWithAlphaComponent:0.25].CGColor;
@@ -175,6 +177,14 @@
 
 - (DKDockSize)currentSize {
     return DKDockSizeFromSize(self.glassLayer.frame.size);
+}
+
+- (void)updateFrame:(CGRect)arg1 {
+    if (Prefs(currentStyle) == DKTheme3DStyle) {
+        arg1.size.height *= 0.63;
+    }
+    
+    ZKOrig(void, arg1);
 }
 
 #pragma mark - Properties

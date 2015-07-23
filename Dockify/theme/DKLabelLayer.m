@@ -35,27 +35,3 @@ ZKSwizzleInterface(DKLabelLayer, DOCKLabelLayer, CALayer)
 
 @end
 
-ZKSwizzleInterface(DKTile, Tile, NSObject)
-
-@interface DKTile (asd)
-- (void)setLabel:(id)arg1 stripAppSuffix:(_Bool)arg2;
-- (void)update;
-@end
-@implementation DKTile
-
-- (id)statusLabelForType:(int)arg1 {
-    return ZKOrig(id, arg1);
-}
-
-- (void)update {
-    ZKOrig(void);
-    
-//    [self setLabel:@"TEST" stripAppSuffix:false];
-}
-
-- (void)setStatusLabel:(id)arg1 forType:(int)arg2 {
-    
-    ZKOrig(void, arg1, arg2);
-}
-
-@end
